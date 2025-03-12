@@ -1,0 +1,124 @@
+/* General Page Styling */
+body {
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('/Users/dityas/Downloads/hydrooo.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Navbar */
+  .navbar {
+    background: linear-gradient(to right, #40916c, #1b4332);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .nav-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  
+  .nav-options {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-options a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 1.2rem;
+  }
+  
+  .search-bar {
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+  }
+  
+  /* Content Section */
+  .content {
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Left Section (Plant Varieties) */
+  .left-section {
+    flex: 1;
+  }
+  
+  .big-button {
+    background-color: #52b788;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .big-button:hover {
+    background-color: #1b4332;
+  }
+  
+  .dropdown-menu {
+    background: white;
+    list-style: none;
+    padding: 10px;
+    margin-top: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+  
+  .dropdown-menu li {
+    padding: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .dropdown-menu li:hover {
+    background: #eaf7e4;
+  }
+  
+  /* Right Section (Hydroponics Info) */
+  .right-section {
+    flex: 1;
+    padding-left: 30px;
+  }
+  
+  .hydroponics-content {
+    
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  h2 {
+    color: #1b4332;
+  }
+  
+  p {
+    font-size: 1.1rem;
+    color: #333;
+  }
+  

@@ -1,0 +1,270 @@
+/* body {
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+    
+  }
+  
+  .monitor-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .navbar {
+    width: 100%;
+    background: linear-gradient(to right, #40916c, #1b4332);
+    color: white;
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 50%;
+    margin-top: 20px;
+  }
+  
+  .capture-button {
+    background: #52b788;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+    border-radius: 5px;
+  }
+  
+  .image-grid {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .image {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+  }
+    */
+    /* body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+    
+        background-size: cover;
+      }
+      
+      .monitor-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
+      
+      .navbar {
+        width: 100%;
+        background: linear-gradient(to right, #40916c, #1b4332);
+        color: white;
+        padding: 15px;
+        text-align: center;
+      }
+      
+      .card {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        width: 50%;
+        margin-top: 20px;
+      }
+      
+      .input-box {
+        background: rgba(0, 0, 0, 0.05);
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+      }
+      
+      .input-group {
+        margin: 10px 0;
+      }
+      
+      .input-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      
+      .input-group input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #52b788;
+        border-radius: 5px;
+      }
+      
+      .image-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+      }
+      
+      .image {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 5px;
+        border: 2px solid #52b788;
+      }
+       */
+       /* General Styles */
+/* General Styles */
+body {
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+  }
+  
+  .monitor-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Navbar */
+  .navbar {
+    width: 100%;
+    background: linear-gradient(to right, #40916c, #1b4332);
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .history-button {
+    background: #f4a261;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  /* Main Card */
+  .card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 50%;
+    margin-top: 20px;
+  }
+  
+  /* Input Fields */
+  .input-box {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .input-group {
+    margin: 10px 0;
+  }
+  
+  .input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #52b788;
+    border-radius: 5px;
+  }
+  
+  /* Image Grid */
+  .image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 2px solid #52b788;
+  }
+  
+  /* History Modal */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 40%;
+  }
+  
+  .history-entry {
+    margin-bottom: 10px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
+  }
+  
+  .history-images {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+  }
+  
+  .history-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 3px;
+    object-fit: cover;
+  }
+  
+  .close-button {
+    background: #e63946;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
