@@ -12,6 +12,7 @@ export default function LandingPage() {
 
   return (
     <div className="landing-container">
+        
       {/* Navbar */}
       <nav className="navbar">
         <h1 className="nav-title">Hydroponics</h1>
