@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import background from "./assets/hydrooo.jpg";
 import "./landingStyles.css";
 
 export default function LandingPage() {
@@ -11,9 +12,7 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="landing-container">
-        
-      {/* Navbar */}
+    <div className="landing-container" style={{ backgroundImage: `url(${background})` }}>
       <nav className="navbar">
         <h1 className="nav-title">Hydroponics</h1>
         <div className="nav-options">
@@ -21,8 +20,7 @@ export default function LandingPage() {
           <input type="text" placeholder="Search..." className="search-bar" />
         </div>
       </nav>
-      
-      {/* Main Content */}
+
       <div className="content">
         <div className="left-section">
           <h2>Plant Varieties</h2>
@@ -31,21 +29,19 @@ export default function LandingPage() {
           </button>
           {dropdownOpen && (
             <ul className="dropdown-menu">
-              <li onClick={() => handlePlantSelection('lettuce')}>Lettuce</li>
-              <li onClick={() => handlePlantSelection('basil')}>Basil</li>
-              <li onClick={() => handlePlantSelection('strawberry')}>Strawberry</li>
+              <li onClick={() => handlePlantSelection("lettuce")}>Lettuce</li>
+              <li onClick={() => handlePlantSelection("basil")}>Basil</li>
+              <li onClick={() => handlePlantSelection("strawberry")}>Strawberry</li>
             </ul>
           )}
         </div>
-        
+
         <div className="right-section">
           <div className="hydroponics-content">
             <h2>What is Hydroponics?</h2>
             <p>
-              Hydroponics is a method of growing plants without soil by using
-              mineral nutrient solutions in an aqueous solvent. This technique
-              allows plants to grow faster, use less water, and be cultivated in
-              urban environments or areas with poor soil conditions.
+              Hydroponics is a method of growing plants without soil by using mineral nutrient solutions in an aqueous solvent.
+              This technique allows plants to grow faster, use less water, and be cultivated in urban environments or areas with poor soil conditions.
             </p>
           </div>
         </div>
