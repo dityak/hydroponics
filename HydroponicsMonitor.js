@@ -1,8 +1,9 @@
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Camera, History } from "lucide-react";
+import { fetchData, addData, deleteData } from "./api";
 import "./monitorStyles.css";
+import backgroundImage from "./assets/hydrooo.jpg"; 
 
 const plants = [
   { id: "lettuce", name: "Lettuce" },
@@ -17,12 +18,22 @@ export default function HydroponicsMonitor() {
   const [images, setImages] = useState([]);
   const [history, setHistory] = useState([]);
   const [showHistory, setShowHistory] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  // Date and time state
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
 
-  const selectedPlant = plants.find(p => p.id === plantId);
+  const selectedPlant = plants.find((p) => p.id === plantId);
+
+  useEffect(() => {
+    async function loadHistory() {
+      setLoading(true);
+      const data = await fetchData();
+      setHistory(data);
+      setLoading(false);
+    }
+    loadHistory();
+  }, []);
 
   const handleImageUpload = (event) => {
     const files = Array.from(event.target.files);
@@ -30,9 +41,13 @@ export default function HydroponicsMonitor() {
     setImages([...images, ...newImages]);
   };
 
-  const saveEntry = () => {
+  const saveEntry = async () => {
     if (!ec || !ph || !date || !time) return;
-    setHistory([...history, { date, time, ec, ph, images }]);
+    
+    const newEntry = { date, time, ec, ph, images, plantId };
+    await addData(newEntry);
+    
+    setHistory([...history, newEntry]);
     setDate("");
     setTime("");
     setEc("");
@@ -40,9 +55,16 @@ export default function HydroponicsMonitor() {
     setImages([]);
   };
 
+  const deleteEntry = async (id) => {
+    await deleteData(id);
+    setHistory(history.filter((entry) => entry.id !== id));
+  };
+
   return (
-    <div className="monitor-container">
-      {/* Navbar */}
+    <div 
+      className="monitor-container"
+      style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: "cover" }}
+    >
       <nav className="navbar">
         <h1 className="nav-title">Hydroponics</h1>
         <button className="history-button" onClick={() => setShowHistory(true)}>
@@ -50,47 +72,28 @@ export default function HydroponicsMonitor() {
         </button>
       </nav>
 
-      {/* Main Card */}
       <div className="card">
         <h2>{selectedPlant ? selectedPlant.name : "Unknown Plant"} Monitoring</h2>
 
         <div className="input-box">
           <div className="input-group">
             <label>Date:</label>
-            <input
-              type="date"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-            />
+            <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
           </div>
 
           <div className="input-group">
             <label>Time:</label>
-            <input
-              type="time"
-              value={time}
-              onChange={(e) => setTime(e.target.value)}
-            />
+            <input type="time" value={time} onChange={(e) => setTime(e.target.value)} />
           </div>
 
           <div className="input-group">
             <label>EC Value:</label>
-            <input
-              type="text"
-              value={ec}
-              onChange={(e) => setEc(e.target.value)}
-              placeholder="Enter EC value"
-            />
+            <input type="text" value={ec} onChange={(e) => setEc(e.target.value)} placeholder="Enter EC value" />
           </div>
 
           <div className="input-group">
             <label>pH Value:</label>
-            <input
-              type="text"
-              value={ph}
-              onChange={(e) => setPh(e.target.value)}
-              placeholder="Enter pH value"
-            />
+            <input type="text" value={ph} onChange={(e) => setPh(e.target.value)} placeholder="Enter pH value" />
           </div>
 
           <div className="input-group">
@@ -98,9 +101,7 @@ export default function HydroponicsMonitor() {
             <input type="file" accept="image/*" multiple onChange={handleImageUpload} />
           </div>
 
-          <button className="capture-button" onClick={saveEntry}>
-            <Camera className="icon" /> Save Entry
-          </button>
+          <button className="capture-button" onClick={saveEntry}>Save Entry</button>
         </div>
 
         <div className="image-grid">
@@ -110,12 +111,13 @@ export default function HydroponicsMonitor() {
         </div>
       </div>
 
-      {/* History Modal */}
       {showHistory && (
         <div className="modal">
           <div className="modal-content">
             <h2>History</h2>
-            {history.length > 0 ? (
+            {loading ? (
+              <p>Loading...</p>
+            ) : history.length > 0 ? (
               history.map((entry, index) => (
                 <div key={index} className="history-entry">
                   <p><strong>Date:</strong> {entry.date}</p>
@@ -127,6 +129,7 @@ export default function HydroponicsMonitor() {
                       <img key={imgIndex} src={src} alt="History" className="history-image" />
                     ))}
                   </div>
+                  <button className="delete-button" onClick={() => deleteEntry(entry.id)}>Delete</button>
                 </div>
               ))
             ) : (
