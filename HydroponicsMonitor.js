@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Camera, History } from "lucide-react";
 import { fetchData, addData, deleteData } from "./api";
 import "./monitorStyles.css";
-import backgroundImage from "./assets/hydrooo.jpg"; 
+import backgroundImage from "./assets/hydrooo.jpg"; // Importing the background image
 
 const plants = [
   { id: "lettuce", name: "Lettuce" },
